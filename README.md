@@ -111,6 +111,10 @@ All other settings are in **Settings ▸ Plugins** in Hermes Desktop or in `conf
 At start a rejected setting falls back to its default; on a live change it keeps
 its last good value, and your other changes still apply. `/pulse status` and
 pulse tool results name the ignored setting.
+`silence_governor_enabled` (default `true`) controls only automatic pauses after
+repeated no-op outcomes or a low useful-outcome ratio. Setting it to `false`
+leaves interval slow-down, ignored-message and error pauses, quiet hours, caps,
+and manual pause/resume controls unchanged.
 
 ## Using it
 **You**, in the chat:

@@ -119,10 +119,10 @@ def apply(engine,wake,*,next_check=None):
         w=s.get_wake(w.id)
     since=float(s.get_meta('ratio_since:'+w.id) or '-inf')
     history=[o for o in s.list_occurrences(w.id) if o.state=='done' and o.ended_at is not None and o.ended_at>since][-20:]
-    rule=('noop' if w.noop_streak>=p.noop_pause_after else
+    rule=('noop' if p.silence_governor_enabled and w.noop_streak>=p.noop_pause_after else
           'ignored' if w.ignored_streak>=p.ignored_pause_after else
           'error' if w.error_streak>=p.error_pause_after else
-          'ratio' if len(history)>=12 and sum(value(engine,o) for o in history)/len(history)<.1 else None)
+          'ratio' if p.silence_governor_enabled and len(history)>=12 and sum(value(engine,o) for o in history)/len(history)<.1 else None)
     if rule: pause(engine,w,rule)
 
 

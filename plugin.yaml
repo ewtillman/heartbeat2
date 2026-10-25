@@ -124,6 +124,11 @@ config_schema:
     default: 2
     label: "Wake-from-wake depth"
     description: "How many wakes deep a chain armed inside wake turns may go; a message from you resets it."
+  silence_governor_enabled:
+    type: bool
+    default: true
+    label: "Pause after unproductive wakes"
+    description: "Automatically pause wakes for repeated no-op outcomes or a low useful-outcome ratio. Turn off to disable only these silence-based pauses; interval slow-down, ignored-message and error pauses, quiet hours, caps and manual controls remain active."
   noop_slowdown_after:
     type: int
     default: 3

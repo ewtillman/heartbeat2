@@ -81,6 +81,7 @@ class Policy:
     owner_silent_checkin: bool = False
     checkin_after_hours: int = 24
     max_rearm_chain: int = 2
+    silence_governor_enabled: bool = True
     noop_slowdown_after: int = 3
     noop_backoff_factor: int = 2
     noop_max_backoff_hours: int = 24
